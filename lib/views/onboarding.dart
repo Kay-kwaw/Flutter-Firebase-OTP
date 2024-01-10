@@ -36,8 +36,8 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
+                  const Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
