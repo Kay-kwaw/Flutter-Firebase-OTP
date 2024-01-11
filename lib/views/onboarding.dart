@@ -1,5 +1,8 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:phone_auth/auth/auth.dart';
 
 class PhoneAuthWidget extends StatefulWidget {
   const PhoneAuthWidget({Key? key}) : super(key: key);
@@ -10,6 +13,9 @@ class PhoneAuthWidget extends StatefulWidget {
 }
 
 class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
+
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final Firebase _auth =FirebaseAuth.instance as Firebase;
 
   @override
   void initState() {
@@ -66,7 +72,7 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          blurRadius: 4,
+                          blurRadius: 3,
                           color: Color(0x3600000F),
                           offset: Offset(0, -1),
                         )
@@ -81,35 +87,24 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
+                        const Padding(
                           padding:
-                              const EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
+                              EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.arrow_back_rounded,
-                                    color: Color(0xFF57636C),
-                                    size: 24,
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(10,0,0,0),
+                                  child: Text(
+                                    'Phone Sign In',
+                                    style: TextStyle(
+                                          fontFamily: 'Outfit',
+                                          color: Color(0xFF0F1113),
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                              ),
-                              const Expanded(
-                                child: Text(
-                                  'Phone Sign In',
-                                  style: TextStyle(
-                                        fontFamily: 'Outfit',
-                                        color: Color(0xFF0F1113),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w500,
-                                      ),
                                 ),
                               ),
                             ],
@@ -133,11 +128,11 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    hintText: '+1 (204) 204-2056',
+                                    hintText: '+233 549 (433) (446)',
                                     hintStyle: const TextStyle(
                                           fontFamily: 'Outfit',
                                           color: Color(0xFF57636C),
-                                          fontSize: 14,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.normal,
                                         ),
                                     enabledBorder: OutlineInputBorder(
@@ -195,6 +190,7 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                             children: [
                               OutlinedButton(
                                 onPressed: () async {
+                                  await verifyPhoneNumber(_phoneNumberController.text);
                                 },
                                 child: const Text("Sign In"),
                               ),
