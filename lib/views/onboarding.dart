@@ -15,6 +15,7 @@ class PhoneAuthWidget extends StatefulWidget {
 class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
 
   final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _smsController = TextEditingController();
   final Firebase _auth =FirebaseAuth.instance as Firebase;
 
   @override
@@ -119,6 +120,7 @@ class _PhoneAuthWidgetState extends State<PhoneAuthWidget> {
                             children: [
                               Expanded(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.phone,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Your Phone Number...',

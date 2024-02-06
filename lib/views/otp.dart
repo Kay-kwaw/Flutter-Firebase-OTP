@@ -44,7 +44,7 @@ class _Otp_ScreenState extends State<Otp_Screen> {
                   if (kDebugMode) {
                     print("Completed: $pin");
                     // Verify the OTP using Firebase
-                    verifyOTP(pin);
+                    // verifyOTP(pin);
                   }
                 },
               ),
@@ -69,24 +69,25 @@ class _Otp_ScreenState extends State<Otp_Screen> {
     );
   }
 
-  Future<void> verifyOTP(String otp) async {
-    try {
-      // Get the verification ID from where you stored it during phone authentication
-      String verificationId = "YOUR_VERIFICATION_ID"; // Replace with your actual verification ID
+//   Future<void> verifyOTP(String otp) async {
+//     try {
+//       // Get the verification ID from where you stored it during phone authentication
+//       String verificationId = "YOUR_VERIFICATION_ID"; // Replace with your actual verification ID
 
-      // Create PhoneAuthCredential using the verification ID and OTP entered by the user
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId,
-        smsCode: otp,
-      );
+//       // Create PhoneAuthCredential using the verification ID and OTP entered by the user
+//       PhoneAuthCredential credential = PhoneAuthProvider.credential(
+//         verificationId: verificationId,
+//         smsCode: otp,
+//       );
 
-      // Sign in with the PhoneAuthCredential
-      await _auth.signInWithCredential(credential);
+//       // Sign in with the PhoneAuthCredential
+//       await _auth.signInWithCredential(credential);
 
-      // You can navigate to the next screen or perform any actions here
-    } catch (e) {
-      print("Error verifying OTP: $e");
-      // Handle OTP verification failure
-    }
-  }
+//       // You can navigate to the next screen or perform any actions here
+//     } catch (e) {
+//       print("Error verifying OTP: $e");
+//       // Handle OTP verification failure
+//     }
+//   }
+// }
 }
